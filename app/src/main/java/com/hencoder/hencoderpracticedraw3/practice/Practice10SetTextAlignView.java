@@ -2,6 +2,7 @@ package com.hencoder.hencoderpracticedraw3.practice;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -9,6 +10,7 @@ import android.view.View;
 
 public class Practice10SetTextAlignView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    Paint linePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     String text = "Hello HenCoder";
 
     public Practice10SetTextAlignView(Context context) {
@@ -24,9 +26,8 @@ public class Practice10SetTextAlignView extends View {
     }
 
     {
-        paint.setTextSize(60);
-
-        // 使用 Paint.setTextAlign() 来调整文字对齐方式
+        paint.setTextSize(50);
+        linePaint.setColor(Color.RED);
     }
 
     @Override
@@ -35,13 +36,23 @@ public class Practice10SetTextAlignView extends View {
 
         // 使用 Paint.setTextAlign() 来调整文字对齐方式
 
+        /**
+         * 对齐方式是以drawText的第二个参数x作为参照物
+         * 参考
+         */
+
+        canvas.drawLine(getWidth() / 2, 0, getWidth() / 2, getHeight(), linePaint);
+
         // 第一处：使用 Paint.Align.LEFT
-        canvas.drawText(text, getWidth() / 2, 100, paint);
+        paint.setTextAlign(Paint.Align.LEFT);
+        canvas.drawText(text + "-左对齐", getWidth() / 2, 100, paint);
 
         // 第二处：使用 Paint.Align.CENTER
-        canvas.drawText(text, getWidth() / 2, 200, paint);
+        paint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText(text + "-居中对齐", getWidth() / 2, 200, paint);
 
         // 第三处：使用 Paint.Align.RIGHT
-        canvas.drawText(text, getWidth() / 2, 300, paint);
+        paint.setTextAlign(Paint.Align.RIGHT);
+        canvas.drawText(text + "-右对齐", getWidth() / 2, 300, paint);
     }
 }
