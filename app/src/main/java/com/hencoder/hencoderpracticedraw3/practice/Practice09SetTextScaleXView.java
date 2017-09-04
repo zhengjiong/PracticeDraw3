@@ -27,6 +27,8 @@ public class Practice09SetTextScaleXView extends View {
         paint.setTextSize(60);
 
         // 使用 Paint.setTextScaleX() 来改变文字宽度
+        //设置文字横向放缩。也就是文字变胖变瘦。
+        paint.setTextScaleX(1.5f);
     }
 
     @Override
